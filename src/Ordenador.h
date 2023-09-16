@@ -63,11 +63,7 @@ void Ordenador::mergesort(int *A, int n){
 	mergesortAUX(A, 0, n-1); 
 } 
 
-void Ordenador::mergesortAUX(int *A, int p, int r){
 
-} 
-
-//medio = q, izquierda = p, derecha = r
 void Ordenador::merge(int *A, int p, int q, int r){ 
 	int nL = q - p + 1; 
 	int nR = r - q; 
@@ -76,6 +72,47 @@ void Ordenador::merge(int *A, int p, int q, int r){
 	int R[nR]; 
 
 	for(int i = 0; i < nL; i++){
-		L[i] = A[p + i]; //QUEDE POR AQUI
+		L[i] = A[p + i]; 
+	}  
+
+	for(int j = 0; j < nR; j++){
+		R[j] = A[q + j + 1]; 
+	} 
+
+	int i = 0, j = 0, k = p;  
+
+	while (i < nL && j < nR){
+		if(L[i] <= R[j]){
+			A[k] = L[i]; 
+			i++;
+		}else{
+			A[k] = R[j]; 
+			j++; 
+		} 
+		k++; 
+	} 
+
+	while (i < nL){
+		A[k] = L[i]; 
+		i++; 
+		k++; 
+	} 
+
+	while (j < nR){
+		A[k] = R[j]; 
+		j++; 
+		k++;
+	}
+} 
+
+void Ordenador::mergesortAUX(int *A, int p, int r){ 
+	if(p < r){ 
+		int q = (p + r) / 2; 
+
+		mergesortAUX(A, p, q); 
+
+		mergesortAUX(A, q + 1, r); 
+
+		merge(A, p, q, r); 
 	}
 }

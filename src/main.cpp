@@ -8,7 +8,7 @@ int main(){
 
     Ordenador ordenador; 
 
-    ordenador.insercion(arreglo, tamano); 
+    ordenador.mergesort(arreglo, tamano); 
 
     for(int i=0; i<tamano; i++){ 
         std::cout<<arreglo[i]<<std::endl; 
