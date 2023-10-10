@@ -116,3 +116,6 @@ void Ordenador::mergesortAUX(int *A, int p, int r){
 		merge(A, p, q, r); 
 	}
 }
+
+
+

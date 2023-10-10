@@ -8,7 +8,7 @@ int main(){
 
     srand(time(nullptr)); 
 
-    int tamano = 200000; 
+    int tamano = 50000; 
     int arreglo[tamano]; 
 
     for(int i=0; i<tamano; i++){ 
@@ -19,7 +19,7 @@ int main(){
 
     auto start_time = std::chrono::high_resolution_clock::now();
 
-    ordenador.mergesort(arreglo, tamano); 
+    ordenador.quicksort(arreglo, tamano); 
 
     auto end_time = std::chrono::high_resolution_clock::now(); 
 
