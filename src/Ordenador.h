@@ -12,7 +12,9 @@ class Ordenador{
 	void max_heapify(int *A, int n, int i);  
 	void build_max_heap(int *A, int n); 
 	void quicksortAUX(int *A, int p, int r); 
-	int partition(int *A, int p, int r); 
+	int partition(int *A, int p, int r);  
+	int obtenerMaximo(int *A, int n);  
+	void countingSort(int *A, int n, int div); 
 
 	public:
 	Ordenador(){};
@@ -202,4 +204,50 @@ int Ordenador::partition(int *A, int p, int r){
 } 
 
 //RADIX-SORT 
+
+void Ordenador::radixsort(int *A, int n){
+
+	int maximo = obtenerMaximo(A, n); 
+
+	for(int div = 1; maximo/div > 0; div*= 10){
+		countingSort(A, n, div); 
+	} 
+
+} 
+
+void Ordenador::countingSort(int *A, int n, int div){ 
+	int salida[n]; 
+	int cuenta[10] = {0}; 
+
+	for(int i = 0; i < n; i++){ 
+		cuenta[ (A[i] / div) % 10]++; 
+	} 
+
+	for(int i = 1; i < 10; i++){ 
+		cuenta[i] += cuenta[i - 1]; 
+	} 
+
+	for(int i = n - 1; i >= 0; i--){
+		salida[cuenta[(A[i]/div)%10] - 1] = A[i]; 
+		cuenta[ (A[i]/div) % 10]--; 
+	} 
+
+	for(int i = 0; i < n; i++){
+		A[i] = salida[i]; 
+	}
+}
+
+int Ordenador::obtenerMaximo(int *A, int n){
+
+	int max = A[0]; 
+
+	for(int i = 1; i < n; i++){
+		if(A[i] > max){
+			max = A[i]; 
+		}
+	}
+
+	return max; 
+} 
+
 

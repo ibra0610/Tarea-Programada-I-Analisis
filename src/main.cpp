@@ -11,15 +11,19 @@ int main(){
     int tamano = 50000; 
     int arreglo[tamano]; 
 
+    //for(int i=0; i<tamano; i++){ 
+      //  arreglo[i] = rand() - RAND_MAX /2; 
+    //}
+
     for(int i=0; i<tamano; i++){ 
-        arreglo[i] = rand() - RAND_MAX /2; 
+        arreglo[i] = rand() % 10000; //ESTE GENERA SOLAMENTE ELEMENTOS POSITIVOS PARA PROBAR EL RADIX SORT, HAY QUE USAR EL CODIGO DE ARRIBA QUE TAMBIEN GENERA NEGATIVOS
     }
 
     Ordenador ordenador; 
 
     auto start_time = std::chrono::high_resolution_clock::now();
 
-    ordenador.quicksort(arreglo, tamano); 
+    ordenador.radixsort(arreglo, tamano); 
 
     auto end_time = std::chrono::high_resolution_clock::now(); 
 
@@ -32,6 +36,7 @@ int main(){
             std::cout<<"Failed!"; 
         }
     }
+
 
     return 0; 
 }
