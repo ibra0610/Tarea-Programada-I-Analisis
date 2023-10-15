@@ -14,7 +14,7 @@ class Ordenador{
 	void quicksortAUX(int *A, int p, int r); 
 	int partition(int *A, int p, int r);  
 	int obtenerMaximo(int *A, int n);  
-	void countingSort(int *A, int n, int div); 
+	void countingSort(int *A, int n, int div);  
 
 	public:
 	Ordenador(){};
@@ -29,6 +29,7 @@ class Ordenador{
 	void heapsort(int *A, int n);
 	void quicksort(int *A, int n);
 	void radixsort(int *A, int n);
+
 };
 #endif
 
@@ -245,9 +246,10 @@ int Ordenador::obtenerMaximo(int *A, int n){
 		if(A[i] > max){
 			max = A[i]; 
 		}
-	}
+	} 
+
 
 	return max; 
 } 
-
+ 
 
